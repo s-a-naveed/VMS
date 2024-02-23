@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        label {
+            font-size: 22px;
+        }
+        #labelforupd{
+            margin-left:20px;
+        }
+        .headclass {
+            margin-left: 200px;
+            color: #e74c3c;
+        }
+        .heading {
+            margin-left: 220px;
+            color: #e74c3c;
+            display: inline-block;
+        }
+        .heading1 {
+            margin-left: 370px;
+            display: inline-block;
+            border-bottom: 4px solid black;
+        }
+        /* Style to make span tags display inline */
+        span {
+            display: inline-block;
+            font-size: 22px;
+            margin-left: 20px;
+            margin-top: 0px;
+            border: 2px solid #000; /* Add border around the span */
+            border-radius: 4px;
+            padding: 5px; /* Add padding to space content from border */
+            height: 40px;
+            width: 300px; /* Adjust width as needed */
+        }
+        /* Style for the headings within span tags */
+        h4 {
+            display:block;
+            font-size: 28px; /* Adjust as needed */
+            margin-right: 5px; /* Adjust as needed */
+            padding-top:5px;
+            padding-left: 5px;
+        }
+        .data{
+            border-style: solid;
+            border-width: 2px;
+            border-radius: 5px;
+            width: 500px;
+            margin-left: 145px;
+            margin-bottom: 20px;
+        }
+        /* Style for underlining h1 tag */
+        h1.underline {
+            margin-left: 10px;
+            border-bottom: 4px solid black;
+            display: inline-block;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div  class='headclass w-70'>
+        <h1 class='underline'>Hello {{request.user}}, Welcome to Vehicle management system A.P</h1>
+        <h1 class='heading1 '>Enter the vehicle details</h1>
+    </div>
+    <div class="container w-50">
+        <form action="{% url "home" %}" method='POST'>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="vehiclenum">Vehicle Number:</label>
+                <input type="text" class="form-control" name="vehicle_number" id="vehiclenum">
+            </div>
+            <div class="form-group">
+                <label for="vehicletype">Vehicle Type:</label>
+                <input type="text" class="form-control" name="vehicle_type" id="vehicletype">
+            </div>
+            <div class="form-group">
+                <label for="deliverychallan">Delivery Challan Number:</label>
+                <input type="text" class="form-control" name="delivery_challan_number" id="deliverychallan">
+            </div>
+            <div class="form-group">
+                <label for="purchaseordernumber">Purchase Order Number:</label>
+                <input type="text" class="form-control" name="purchase_order_number" id="purchaseordernumber">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+        <br>
+    </div>
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
