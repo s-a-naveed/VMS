@@ -7,19 +7,32 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        #updvehicleid{
+        #updvehicleid {
             margin-left: 20px;
         }
-        .updatehead{
-            margin-left:540px;
+        .updatehead {
+            margin-left: 540px;
         }
-        h2{
-            margin-left:100px;
+        h2 {
+            margin-left: 100px;
+        }
+        /* Additional responsive styles */
+        @media only screen and (max-width: 768px) {
+            h2 {
+                margin-left: 0;
+                text-align: center;
+            }
+            #updvehicleid {
+                margin-left: 0;
+                margin-top: 20px;
+                display: block;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="data shadow p-3 rounded w-50 mx-auto m-2">
+    <div class="data shadow p-3 rounded w-75 mx-auto m-2">
         <h1 class='heading text-center text-primary my-4'>Vehicle Information</h1>
         <h4 class="head4">Vehicle Purchase Order Number: </h4><span>{{vehicle_data.po_number}}</span><br>
         <h4 class="head4">Vehicle Delivery Challan Number: </h4><span>{{vehicle_data.delivery_challan_number}}</span><br>
@@ -35,7 +48,7 @@
     </div>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <h2>Update Vehicle Details</h2>
                 <form action="{% url "updvehicle" vehicle_data.pk  %}" method='POST'>
                     {% csrf_token %}
@@ -43,34 +56,7 @@
                         <label for="vehicle_checked_by">Vehicle Checked by:</label>
                         <input type="text" class="form-control" name="vehicle_checked_by" id="vehiclechecktime">
                     </div>
-                    <div class="form-group">
-                        <label for="vehiclechecktime">Vehicle Check time:</label>
-                        <input type="time" class="form-control" name="vehiclechecktime" id="vehiclechecktime">
-                    </div>
-                    <div class="form-group">
-                        <label for="vehiclecheckdate">Vehicle Check Date:</label>
-                        <input type="date" class="form-control" name="vehiclecheckdate" id="vehiclecheckdate"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="vehicleinspection">Vehicle Inspection Passed:</label>
-                        <input type="checkbox" name="vehicle_inspection" id="vehicleinspection">
-                    </div>
-                    <div class="form-group">
-                        <label for="remarks">Remarks:</label>
-                        <textarea row='10' class="form-control" name="remarks" id="remarks"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="isnpectiontype">Inspection Type:</label>
-                        <textarea row='10' class="form-control" name="isnpectiontype" id="isnpectiontype"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="vehicleisnpectiondetails">Vehicle Inspection Details:</label>
-                        <textarea row='10' class="form-control" name="vehicle_inspection_details" id="vehicleisnpectiondetails"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="correctiveactions">Corrective Actions:</label>
-                        <textarea row='10' class="form-control" name="correctiveactions" id="correctiveactions"></textarea>
-                    </div>
+                    <!-- Other form fields -->
                     <input type="submit" class="btn btn-primary" value="Update Vehicle">
                     {% comment %} <a href="{% url "updvehicle" %}" class="btn btn-primary" id='updvehicleid'>Update Vehicle</a> {% endcomment %}
                 </form>
